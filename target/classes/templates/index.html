@@ -8,8 +8,12 @@
 <body>
 <header th:replace="layout :: site-header" />
 
-<h1>Welcome to Spring MVC</h1>
-Now is: <b th:text="${execInfo.now.time}">date and time</b>
+<main>
+    <article th:each="p : ${latest3posts}">
+        <h1 th:text="${p.title}">Post Title</h1>
+        <p th:utext="${p.body}">Post Body</p>
+    </article>
+</main>
 
 <footer th:replace="layout :: site-footer" />
 </body>
