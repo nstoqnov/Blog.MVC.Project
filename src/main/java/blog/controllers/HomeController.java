@@ -1,14 +1,18 @@
 package blog.controllers;
 
+import blog.forms.EditPostForm;
 import blog.models.Post;
 import blog.services.NotificationService;
 import blog.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,4 +47,12 @@ public class HomeController {
 
         return "posts/index";
     }
+
+    @RequestMapping("/posts/edit/{id}")
+    public String editPost (@PathVariable("id") Long id, Model model) {
+            Post post = postService.findById(id);
+
+            return "/posts/edit";
+    }
+
 }

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+    <title>Edit post.</title>
+</head>
+
+<body>
+<header th:replace="layout :: site-header" />
+
+<h1>Login in the Blog</h1>
+
+<form method="post" th:object="${editpostform}">
+    <div><label for="title">Title:</label></div>
+    <input id="title" type="text" name="title" th:value="*{title}" />
+    <span class="formError" th:if="${#fields.hasErrors('title')}"
+          th:errors="*{title}">Invalid title</span>
+
+    <div><label for="body" th:value="*{body}">Content:</label></div>
+    <input id="body" type="body" name="body" th:value="*{body}" />
+    <span class="formError" th:if="${#fields.hasErrors('body')}"
+          th:errors="*{body}">Invalid body of post.</span>
+
+    <div><label for="date" th:value="*{date}">Content:</label></div>
+    <input id="date" type="date" name="date" th:value="*{date}" />
+    <span class="formError" th:if="${#fields.hasErrors('date')}"
+          th:errors="*{date}">Invalid body of post.</span>
+
+    <div><label for="authourid" th:value="*{authourid}">Content:</label></div>
+    <input id="authourid" type="authourid" name="authourid" th:value="*{authourid}" />
+    <span class="formError" th:if="${#fields.hasErrors('authourid')}"
+          th:errors="*{authourid}">Invalid body of post.</span>
+
+    <div><input type="Edit" value="Login"/>
+        <a href="index.html" th:href="@{/}">[Cancel]</a></div>
+</form>
+
+<footer th:replace="layout :: site-footer" />
+</body>
+
+</html>
