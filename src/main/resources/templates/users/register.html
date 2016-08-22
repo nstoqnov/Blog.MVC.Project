@@ -8,9 +8,9 @@
 <body>
 <header th:replace="layout :: site-header" />
 
-<h1>Login in the Blog</h1>
+<h1>Sign up in the Blog</h1>
 
-<form method="post" th:object="${loginForm}">
+<form method="post" th:object="${registerForm}">
     <div><label for="username">Username:</label></div>
     <input id="username" type="text" name="username" th:value="*{username}" />
     <span class="formError" th:if="${#fields.hasErrors('username')}"
@@ -21,8 +21,18 @@
     <span class="formError" th:if="${#fields.hasErrors('password')}"
           th:errors="*{password}">Invalid password</span>
 
-    <div><input type="submit" value="Login"/>
-        <a href="register.html" th:href="@{/users/register}">[Go to Register]</a></div>
+    <div><label for="email" th:value="*{email}">Email:</label></div>
+    <input id="email" type="email" name="email" th:value="*{email}" />
+    <span class="formError" th:if="${#fields.hasErrors('password')}"
+          th:errors="*{email}">Invalid Email</span>
+
+    <div><label for="password" th:value="*{fullname}">Fullname:</label></div>
+    <input id="fullname" type="fullname" name="fullname" th:value="*{fullname}" />
+    <span class="formError" th:if="${#fields.hasErrors('password')}"
+          th:errors="*{fullname}">Invalid fullname.</span>
+
+    <div><input type="submit" value="Register"/>
+</div>
 </form>
 
 <footer th:replace="layout :: site-footer" />
