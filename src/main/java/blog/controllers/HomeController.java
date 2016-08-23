@@ -55,4 +55,11 @@ public class HomeController {
             return "/posts/edit";
     }
 
+    @RequestMapping("/posts")
+    public String posts (Model model){
+        List<Post> allPosts = postService.findAll();
+        model.addAttribute("allPosts", allPosts);
+
+        return "/posts/allposts";
+    }
 }
